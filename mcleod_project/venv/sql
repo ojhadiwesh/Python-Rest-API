@@ -1,0 +1,8 @@
+import pandas as pd
+import numpy as np
+import pymysql as mysql
+
+db_connection = mysql.connect(host= 'vps11426.inmotionhosting.com', database = 'mcleod', user = 'dojha', password = 'dOjha1458')
+
+df = pd.read_sql("select * from stops inner join movement on stops.id= movement.destStopId where year(stops.actualArrival)= '2018'", con = db_connection)
+print(df.head())
